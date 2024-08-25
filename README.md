@@ -16,8 +16,10 @@ A React application for browsing Marvel characters using the Marvel API.
 2. Install dependencies: `npm install`
 3. Create a `.env` file in the root directory with your Marvel API keys:
 
+```dotenv
 VITE_REACT_APP_MARVEL_PUBLIC_KEY=your_public_key
 VITE_REACT_APP_MARVEL_PRIVATE_KEY=your_private_key
+```
 
 4. Start the development server: `npm run dev`
 
