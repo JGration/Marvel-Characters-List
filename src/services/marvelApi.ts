@@ -40,10 +40,9 @@ export const fetchCharacters = async (offset: number, limit: number) => {
   try {
     const url = `${BASE_URL}/characters?${getAuthParams()}&offset=${offset}&limit=${limit}`;
     
-    // Debugging: Log the URL and keys being used
     console.log('Marvel API URL:', url);
     console.log('Public Key:', PUBLIC_KEY);
-    console.log('Private Key:', PRIVATE_KEY); // Note: Be careful logging sensitive information in production
+    console.log('Private Key:', PRIVATE_KEY);
 
     return await fetchWithTimeout(url);
   } catch (error) {

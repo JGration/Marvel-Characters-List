@@ -70,10 +70,6 @@ const getComicPhrases = (comics: any[]): { id: string, label: string, value: num
 
 const CharacterContent: React.FC<{ character: any }> = ({ character }) => {
   const [data, setData] = useState<{ id: string, label: string, value: number }[]>([]);
-  const legendItemCount = data.length;
-  const legendItemHeight = 24;
-  const legendItemsSpacing = 8; 
-  const legendHeight = Math.min(legendItemCount * (legendItemHeight + legendItemsSpacing), 300); 
 
   useEffect(() => {
     if (character.comics?.items) {
@@ -92,39 +88,53 @@ const CharacterContent: React.FC<{ character: any }> = ({ character }) => {
             className="character-details__image"
           />
         </div>
-        <div className="character-details__chart-container" style={{ height: `calc(40vh + ${legendHeight}px)` }}>
-          <ResponsivePie
-            data={data}
-            margin={{ top: 40, right: 80, bottom: legendHeight, left: 80 }}
-            innerRadius={0.5}
-            padAngle={0.7}
-            cornerRadius={3}
-            activeInnerRadiusOffset={8}
-            activeOuterRadiusOffset={8}
-            colors={{ scheme: 'nivo' }}
-            fit={true}
-            borderWidth={1}
-            borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
-            enableArcLabels={true}
-            enableArcLinkLabels={false}
-            isInteractive={false}
-            tooltip={() => <></>}
-            legends={[
-              {
-                anchor: 'bottom',
-                direction: 'column',
-                justify: false,
-                translateX: 0,
-                translateY: legendHeight,
-                itemsSpacing: legendItemsSpacing,
-                itemWidth: 100,
-                itemHeight: legendItemHeight,
-                itemTextColor: '#ffffff',
-                symbolSize: 18,
-                symbolShape: 'circle',
-              },
-            ]}
-          />
+        <div className="character-details__chart-container">
+          {data.length > 0 ? (
+            <ResponsivePie
+              data={data}
+              margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+              innerRadius={0.5}
+              padAngle={0.7}
+              cornerRadius={3}
+              activeOuterRadiusOffset={8}
+              borderWidth={1}
+              arcLinkLabelsSkipAngle={10}
+              arcLinkLabelsTextColor="#333333"
+              arcLinkLabelsThickness={2}
+              arcLinkLabelsColor={{ from: 'color' }}
+              arcLabelsSkipAngle={10}
+              enableArcLabels={true}
+              enableArcLinkLabels={false}
+              isInteractive={true}
+              legends={[
+                {
+                  anchor: 'bottom-left',
+                  direction: 'column',
+                  justify: false,
+                  translateX: 0,
+                  translateY: 56,
+                  itemsSpacing: 4,
+                  itemWidth: 100,
+                  itemHeight: 18,
+                  itemTextColor: '#999',
+                  itemDirection: 'left-to-right',
+                  itemOpacity: 1,
+                  symbolSize: 18,
+                  symbolShape: 'circle',
+                  effects: [
+                    {
+                      on: 'hover',
+                      style: {
+                        itemTextColor: '#000'
+                      }
+                    }
+                  ]
+                }
+              ]}
+            />
+          ) : (
+            <p>No data available for the chart.</p>
+          )}
         </div>
       </div>
       <div className="character-details__info">
@@ -138,7 +148,6 @@ const CharacterContent: React.FC<{ character: any }> = ({ character }) => {
     </div>
   );
 };
-
 
 const CharacterList: React.FC<{ title: string; items: any[] }> = ({ title, items }) => (
   <>

@@ -112,7 +112,6 @@ export const fetchCharacterDetails = createAsyncThunk(
   'characters/fetchCharacterDetails',
   async (characterId: number, { rejectWithValue }) => {
     try {
-      // Check if we're using local data
       const usingLocalData = JSON.parse(localStorage.getItem('useLocalData') || 'false');
 
       if (usingLocalData) {
