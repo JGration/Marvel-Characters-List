@@ -38,6 +38,7 @@ VITE_REACT_APP_MARVEL_PRIVATE_KEY=your_private_key
 - Axios
 - SASS
 - Vite
+- Nivo (Piechart)
 
 ## File Structure
 
