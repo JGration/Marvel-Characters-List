@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CharacterList from './components/CharacterList';
 import CharacterDetails from './components/CharacterDetails';
-import './App.css'; // Ensure this file is included if it contains global styles
+import './App.css';
 
 const App: React.FC = () => {
   return (
