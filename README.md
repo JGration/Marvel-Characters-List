@@ -28,7 +28,7 @@ VITE_REACT_APP_MARVEL_PRIVATE_KEY=your_private_key
 - Browse characters on the main page
 - Use the search bar to filter characters
 - Click on a character to view details
-- Toggle between API and local data using the button
+- Toggle between API and local data using a button
 
 ## Technologies
 
