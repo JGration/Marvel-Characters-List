@@ -89,6 +89,12 @@ const CharacterList: React.FC = () => {
         </button>
       </div>
 
+      {useLocalData && (
+        <div className="character-list__info">
+          This local data only has content for 1 page! But feel free to use it nonetheless.
+        </div>
+      )}
+
       {loading && (
         <div className="character-list__loading-container">
           Loading...
